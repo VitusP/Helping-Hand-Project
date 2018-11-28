@@ -2,7 +2,7 @@
   Helping Hand Project Electromechanical Arm Project
   Modified by: Vitus Putra
   Affilation: NCSU Helping Hand Club
-  Date: 11/22/2018
+  Date: 11/27/2018
  ****************************************************/
 
 #include <Wire.h>
@@ -19,8 +19,8 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 // want these to be as small/large as possible without hitting the hard stop
 // for max range. You'll have to tweak them as necessary to match the servos you
 // have!
-#define SERVOMIN  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVOMAX  600 // this is the 'maximum' pulse length count (out of 4096)
+#define SERVOMIN  200 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMAX  900 // this is the 'maximum' pulse length count (out of 4096)
 
 int myosensor_pin = A0;
 int myosensor_val = 0;
