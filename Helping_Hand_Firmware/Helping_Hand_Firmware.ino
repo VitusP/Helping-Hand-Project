@@ -25,11 +25,6 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 int myosensor_pin = A0;
 int myosensor_val = 0;
 
-int actuators[] = {0,1,2,3,4};
-
-// our servo # counter
-uint8_t servonum = 0;
-
 void setup() {
   Serial.begin(9600);
   Serial.println("8 channel Servo test!");
@@ -62,27 +57,22 @@ void readMyomuscleSensor(){
   Serial.println("Muscle Value: " + myosensor_val);
 }
 
-void moveForward(int actuators[]){
-  int length = sizeof(actuators)/sizeof(int);
+void moveForward(int n){
   for (uint16_t pulselen = SERVOMIN; pulselen < SERVOMAX; pulselen++) {
-    for(int n=0; n=length;n++){
       pwm.setPWM(n, 0, pulselen);
-    }
   }
   delay(500);
 }
 
-void moveBackward(int actuators[]){
-  int length = sizeof(actuators)/sizeof(int);
+void moveBackward(int n){
   for (uint16_t pulselen = SERVOMAX; pulselen > SERVOMIN; pulselen--) {
-    for(int n=0; n=length;n++){
       pwm.setPWM(n, 0, pulselen);
-    }
   }
   delay(500);
 
 }
 void loop() {
-  moveForward(actuators);
-  moveBackward(actuators);
+  moveForward(0);
+  moveBackward(0);
+  delay(1000);
 }
