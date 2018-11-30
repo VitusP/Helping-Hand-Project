@@ -24,6 +24,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
 int myosensor_pin = A0;
 int myosensor_val = 0;
+bool engaged = false;
 
 void setup() {
   Serial.begin(9600);
@@ -62,7 +63,6 @@ void moveForward(){
       pwm.setPWM(0, 0, pulselen);
       pwm.setPWM(1, 0, pulselen);
       pwm.setPWM(2, 0, pulselen);
-      pwm.setPWM(3, 0, pulselen);
   }
   delay(500);
 }
@@ -72,13 +72,19 @@ void moveBackward(){
       pwm.setPWM(0, 0, pulselen);
       pwm.setPWM(1, 0, pulselen);
       pwm.setPWM(2, 0, pulselen);
-      pwm.setPWM(3, 0, pulselen);
   }
   delay(500);
 
 }
 void loop() {
-  moveForward();
-  moveBackward();
-  delay(1000);
+  readMyomuscleSensor();
+  if(myosensor_val > 400  && engaged == false){
+    !engaged;
+    moveForward();
+    delay(1000);
+  }else if(myosensor_val > 400 && engaged == true){
+    !engaged;
+    moveBackward();
+    delay(1000);
+  }
 }
