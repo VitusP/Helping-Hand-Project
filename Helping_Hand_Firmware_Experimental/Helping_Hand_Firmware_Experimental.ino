@@ -2,7 +2,7 @@
   Helping Hand Project Electromechanical Arm Project Experimental Code
   Modified by: Vitus Putra
   Affilation: NCSU Helping Hand Club
-  Date: 11/27/2018
+  Last Change Date: 11/30/2018
  ****************************************************/
 
 #include <Wire.h>
