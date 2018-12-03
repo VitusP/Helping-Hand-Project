@@ -2,7 +2,7 @@
   Helping Hand Project Electromechanical Arm Project Experimental Code
   Modified by: Vitus Putra
   Affilation: NCSU Helping Hand Club
-  Last Change Date: 11/30/2018
+  Last Change Date: 12/3/2018
  ****************************************************/
 
 #include <Wire.h>
@@ -53,11 +53,13 @@ void setServoPulse(uint8_t n, double pulse) {
   pwm.setPWM(n, 0, pulse);
 }
 
+//Read muscle sensor data
 void readMyomuscleSensor(){
   int myosensor_val = analogRead(myosensor_pin);
   Serial.println("Muscle Value: " + myosensor_val);
 }
 
+//Move actuator Forward
 void moveForward(){
   for (uint16_t pulselen = SERVOMIN; pulselen < SERVOMAX; pulselen++) {
       pwm.setPWM(0, 0, pulselen);
@@ -67,6 +69,7 @@ void moveForward(){
   delay(500);
 }
 
+//Move actuator backward
 void moveBackward(){
   for (uint16_t pulselen = SERVOMAX; pulselen > SERVOMIN; pulselen--) {
       pwm.setPWM(0, 0, pulselen);
@@ -76,6 +79,8 @@ void moveBackward(){
   delay(500);
 
 }
+
+//Loop
 void loop() {
   readMyomuscleSensor();
   if(myosensor_val > 400  && engaged == false){
