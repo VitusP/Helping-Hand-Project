@@ -55,7 +55,7 @@ void setServoPulse(uint8_t n, double pulse) {
 
 //Read muscle sensor data
 void readMyomuscleSensor(){
-  int myosensor_val = analogRead(myosensor_pin);
+  myosensor_val = analogRead(myosensor_pin);
   Serial.println("Muscle Value: " + myosensor_val);
 }
 
