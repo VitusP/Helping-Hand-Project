@@ -56,7 +56,7 @@ void setServoPulse(uint8_t n, double pulse) {
 //Read muscle sensor data
 void readMyomuscleSensor(){
   myosensor_val = analogRead(myosensor_pin);
-  Serial.println("Muscle Value: " + myosensor_val);
+  Serial.println(myosensor_val);
 }
 
 //Move actuator Forward
@@ -83,13 +83,13 @@ void moveBackward(){
 //Loop
 void loop() {
   readMyomuscleSensor();
-  if(myosensor_val > 400  && engaged == false){
-    !engaged;
+  if(myosensor_val > 690  && engaged == false){
+    engaged = true;
     moveForward();
-    delay(1000);
-  }else if(myosensor_val > 400 && engaged == true){
-    !engaged;
+    delay(500);
+  }else if(myosensor_val > 690 && engaged == true){
+    engaged = false;
     moveBackward();
-    delay(1000);
+    delay(500);
   }
 }
