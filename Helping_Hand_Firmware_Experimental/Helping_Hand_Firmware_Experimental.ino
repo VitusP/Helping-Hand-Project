@@ -60,6 +60,7 @@ void readMyomuscleSensor(){
 }
 
 //Move actuator Forward
+//Run 3 actuators at a time
 void moveForward(){
   for (uint16_t pulselen = SERVOMIN; pulselen < SERVOMAX; pulselen++) {
       pwm.setPWM(0, 0, pulselen);
@@ -70,6 +71,7 @@ void moveForward(){
 }
 
 //Move actuator backward
+//run 3 actuator at the time
 void moveBackward(){
   for (uint16_t pulselen = SERVOMAX; pulselen > SERVOMIN; pulselen--) {
       pwm.setPWM(0, 0, pulselen);
@@ -80,7 +82,7 @@ void moveBackward(){
 
 }
 
-//Loop
+//Main loop method, this is where you should implement the logic flow
 void loop() {
   readMyomuscleSensor();
   if(myosensor_val > 690  && engaged == false){
